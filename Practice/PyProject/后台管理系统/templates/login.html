@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Login Page</title>
+</head>
+<body>
+    <h1>Login</h1>
+    <form method="POST" action="{{ url_for('login') }}">
+        {% if errors %}
+        <p style="color:red">{{ errors }}</p>
+        {% endif %}
+        <label for="mobile">mobile:</label>
+        <input type="text" id="mobile" name="mobile" required>
+        <br>
+        <label for="password">Password:</label>
+        <input type="password" id="password" name="password" required>
+        <br>
+        <input type="submit" value="Login">
+        <a href="/register">注册</a>
+        <br>
+        <a href="/">返回首页</a>
+        <br>
+             这是一个组件 {% block title %}{% endblock %} {% block content %}{% endblock %}
+    </form>
+</body>
+</html>

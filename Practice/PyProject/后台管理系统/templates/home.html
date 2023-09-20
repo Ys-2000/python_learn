@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Home</title>
+</head>
+<body>
+    <h3>Welcome to the home page</h3>
+    <a href="/login">登录</a>
+    <a href="/register">注册</a>
+    <br>
+<!--  jinja2模板继承  extends -->
+    <div>{% extends 'login.html'%}{% block content %} 我是传过来的内容 {%
+       endblock %} {% block title %} 我是传过来的标题 {% endblock %}</div>
+</body>
+</html>

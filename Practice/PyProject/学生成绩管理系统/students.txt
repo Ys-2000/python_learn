@@ -1,0 +1,6 @@
+{'id': 5, 'name': '关羽', 'C语言': 80, 'Python': 78, 'Java': 78}
+{'id': 2, 'name': '关羽', 'C语言': 80, 'Python': 78, 'Java': 78}
+{'id': 128, 'name': '关羽', 'C语言': 80, 'Python': 78, 'Java': 78}
+{'id': 3, 'name': '关羽', 'C语言': 80, 'Python': 78, 'Java': 78}
+{'id': 6, 'name': '4', 'C语言': 5, 'Python': 2, 'Java': 2}
+{'id': 852, 'name': '123', 'C语言': 265, 'Python': 56, 'Java': 56}

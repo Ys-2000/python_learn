@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link rel="stylesheet" href="/static/plugins/bootstrap-3.3.7/dist/css/bootstrap.css">
+
+</head>
+
+<body>
+    <div>
+        <p>{#{ 11|my_filter:22 }#}</p>
+        <p>{#% my_tag1 11 22 33 %#}</p>
+        <p>{#% my_html "zzz" "xxx" %#}</p>
+        <hr>
+        {% load static %}
+        {{name}}:<img decoding="async" src="{% static 'images/runoob-logo.png' %}" alt="error-logo">
+    </div>
+    <h1>{{ hello }}</h1>
+    <h3>格式当前时间:{{ time|date:"Y-m-d" }}</h3>
+    <br>
+    <h5>当前值:{{ name }}</h5>
+    <h5>显示文件的大小:{{ name|filesizeformat }}</h5>
+    <h5>将值转换为小写:{{ name|lower }}</h5>
+    <h5>显示变量前3个单词:{{ name|truncatewords:"2" }}</h5>
+    <h5>如果字符串包含的字符总个数多于指定的字符数量，那么会被截断掉后面的部分:{{ name|truncatechars:4 }}</h5>
+    <h5>显示变量的长度:{{ name|length }}</h5>
+    <hr>
+    <h5>safe将字符串标记为安全，不需要转义{{ views_str|safe }}</h5>
+    <h5>如果 views 传的变量的布尔值是 false，则使用指定的默认值:{{ pub_date|default:"菜鸟6" }}</h5>
+    <hr>
+    <h5>列表所有值:{{ views_list }}</h5>
+    <h5>列表第一个元素:{{ views_list.1 }}</h5>
+    <h5>取第一个元素并将其转化为大写:{{ views_list|first|upper }}</h5>
+    <hr>
+    <h5>字典所有值:{{ views_dict }}</h5>
+    <h5>取字典name的值:{{ views_dict.name }}</h5>
+    <hr>
+    <div>
+        {%if num > 90 and num <= 100 %}
+            <p>优秀</p>
+        {% elif num > 60 and num <= 90 %}
+             <p>合格</p>
+        {% else %}
+            <p>不合格</p>
+        {% endif %}
+    </div>
+    <div>
+        <ul>
+            <li>reversed反向迭代</li>
+        {% for i in views_list reversed %}
+            <li>{{ i }}</li>
+        {% empty %}
+            <li>empty在循环为空的时候执行,（即 in 后面的参数布尔值为 False ）</li>
+        {% endfor %}
+        </ul>
+    </div>
+    <hr>
+    <div>
+        <ul>
+            <li>reversed反向迭代</li>
+        {% for i, j in views_dict.items %}
+            <li>{{ i }}---{{ j }}</li>
+        {% endfor %}
+        </ul>
+    </div>
+    <hr>
+    <div>
+        {% if views_list == views_dict %}
+            <h2>Welcome!</h2>
+        {% else %}
+            <h2>Django 注释使用 {# #}</h2>
+        {% endif %}
+    </div>
+</body>
+</html>

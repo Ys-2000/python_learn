@@ -1,0 +1,231 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>学生成绩管理系统</title>
+    <link rel="icon" href="http://v3.bootcss.com/favicon.ico" >
+    <style>
+        .container {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+        }
+        * {
+            margin: 0;
+            padding: 0;
+        }
+
+        ul {
+            list-style-type: none;
+            margin: 0;
+            padding: 0;
+            width: 200px;
+            background-color: #f1f1f1;
+        }
+
+        li a {
+            display: block;
+            color: #000;
+            padding: 8px 16px;
+            text-decoration: none;
+        }
+
+        li a.active {
+            background-color: #4CAF50;
+            color: white;
+        }
+
+        li a:hover:not(.active) {
+            background-color: #555;
+            color: white;
+        }
+
+        li {
+            list-style: none;
+        }
+
+        a {
+            text-decoration: none;
+            color: white;
+        }
+
+        .header {
+            position: relative;
+            width: 100%;
+            height: 55px;
+            background-color: black;
+        }
+
+        .left {
+            position: absolute;
+            left: 20px;
+            font-size: 20px;
+            line-height: 55px;
+            color: white;
+            text-align: center;
+        }
+
+        .right {
+            position: absolute;
+            right: 160px;
+            line-height: 55px;
+            color: white;
+            text-align: center;
+        }
+
+        .right_right {
+            position: absolute;
+            right: 24px;
+            line-height: 55px;
+            color: white;
+            text-align: center;
+        }
+
+        .leftside {
+            float: left;
+            background-color: rgb(245, 245, 245);
+            /* height: 663px; */
+            width: 230px;
+        }
+
+        .leftside ul {
+            height: 663px;
+        }
+
+        .leftside .first {
+            background-color: rgb(66, 139, 202);
+            margin-top: 25px;
+        }
+
+        .leftside .first a {
+            color: white;
+        }
+
+        .leftside {
+            float: left;
+            width: 200px;
+            height: 100%;
+        }
+
+        .leftside ul li {
+            border-bottom: 0.2px solid white;
+            font-size: 20px;
+            height: 60px;
+            line-height: 60px;
+            width: 100%;
+            text-align: center;
+        }
+
+        .container-fluid {
+            float: none;
+            width: 100%;
+            height: 100%;
+        }
+
+        .table-responsive {
+
+            margin-top: 10px;
+        }
+
+        .table-striped {
+
+            width: 1250px;
+        }
+
+        thead tr th {
+            background-color: white;
+        }
+
+    </style>
+</head>
+
+<body>
+<div class="container">
+    <div class="header">
+        <span class="left">学 生 信 息 修 改</span>
+        <span class="right">你 好，{{user_info}} 管 理 员!</span>
+        <span class="right_right"><a href="/">退出登录</a></span>
+    </div>
+    <div class="leftside">
+        <ul>
+            <li><a href="/student">学生信息录入</a></li>
+             <li class="first"><a href="#">学生信息变动</a></li>
+            <li><a href="/teacher_class">老师开设课程查看</a></li>
+            <li><a href="/teacher">选课信息录入</a></li>
+            <li><a href="/grade">成绩信息录入</a></li>
+            <li><a href="/grade_infos">学生成绩查询</a></li>
+            <li><a href="/graduation">毕业去向</a></li>
+            <li><a href="/adminstator">系统管理员变动</a></li>
+        </ul>
+    </div>
+    <div class="container-fluid">
+        <h1 class="sub-header">学 生 信 息 修 改 系 统</h1>&nbsp;&nbsp;
+        <hr>
+        <div class="table-responsive">
+            <table class="table table-striped">
+                <thead>
+                    <tr>
+                        <th>学生学号<span>(限全数字的学号)</span></th>
+                        <th>学生班级<span></span></th>
+                        <th>学生姓名<span></span></th>
+                        <th>学生性别<span></span></th>
+                        <th>(修改/删除)学生</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <form action="" method="post">
+                            <td>
+                                <input class="long" name="student_id" type="text" />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                            </td>
+                            <td>
+                                <input class="long" name="student_class" type="text" />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                            </td>
+                            <td>
+                                <input class="long" name="student_name" type="text" />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                            </td>
+                            <td>
+                                <input class="long" name="student_sex" type="text" />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                            </td>
+                            <td><select name="selected_one">
+                                    <option value="修改学生班级">修改学生班级</option>
+                                    <option value="修改学生姓名">修改学生姓名</option>
+                                    <option value="修改学生性别">修改学生性别</option>
+                                    <option value="删除学生">删除学生</option>
+                                </select>
+                            </td>
+                            <td>
+                                <input class="last" type="submit" value="操作" />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                            </td>
+                            <td class="doit">
+                                <span>操作结果:{{insert_result}}</span>
+                            </td>
+                        </form>
+                    </tr>
+                    <tr>
+                        <td>学号</td>
+                        <td>班级</td>
+                        <td>姓名</td>
+                        <td>性别</td>
+                    </tr>
+                    {% for result in results %}
+                    <tr>
+                        <td>{{result[0]}}</td>
+                        <td>{{result[1]}}</td>
+                        <td>{{result[2]}}</td>
+                        <td>{{result[3]}}</td>
+                    </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+</div>
+
+
+</body>
+
+</html>

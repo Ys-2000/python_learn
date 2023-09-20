@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Login Page</title>
+</head>
+<body>
+    <h1>Login</h1>
+    <form method="POST" action="">
+        {% csrf_token %}
+        user: <input type="text" id="mobile" name="name" placeholder="用户名">
+        <br>
+        Password: <input type="password" id="password" name="password" placeholder="密码">
+        <br>
+        <input type="submit" value="提交">
+        <br>
+    </form>
+</body>
+</html>
