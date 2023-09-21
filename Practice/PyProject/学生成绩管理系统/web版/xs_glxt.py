@@ -1,5 +1,5 @@
 from flask import Flask, render_template, request, redirect
-import pymysql,flask,re,secrets
+import pymysql, flask, re, secrets
 
 # 初始化
 app = flask.Flask(__name__)
