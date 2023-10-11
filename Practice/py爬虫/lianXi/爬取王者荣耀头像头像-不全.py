@@ -12,22 +12,22 @@ html = requests.get(url).content   # .content用于获取响应的内容
 # 解析数据
 doc = PyQuery(html)
 items = doc('.herolist>li').items()     # 将它们作为一个可迭代对象的集合返回给 items
+if not os.path.exists(base_path):
+     os.makedirs(base_path, exist_ok=True)  # exist_ok=True 表示如果目录已经存在，不会引发错误
 
 for item in items:
      url = item.find('img').attr('src')
      # print(url)
      urls = 'http:'+url
      # name = item.find('a').text()
-     name = item.find('img').attr('alt')
+     name = item.find('img').attr('alt').replace('/', '_')  # .replace('/', '_')清理文件名中的非法字符
      # name = item.text()
      print(name)
      url_content = requests.get(urls).content
-     cc_path = os.path.join(base_path, name, f'{name}.jpg')
+     cc_path = os.path.join(base_path, f'{name}.jpg')  # base_path,name,f'{name}.jpg' ---不应该+name
      # print(cc_path)
 
     #保存数据
-     if not os.path.exists(base_path):
-          os.makedirs(base_path)
      with open(cc_path, 'wb') as file:
           file.write(url_content)
           print("正在下载%s......%s"%(name, urls))
