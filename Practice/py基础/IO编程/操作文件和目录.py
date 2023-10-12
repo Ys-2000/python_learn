@@ -19,9 +19,9 @@ import os
 # 这些合并、拆分路径的函数并不要求目录和文件要真实存在，它们只对字符串进行操作
 
 # # 对文件重命名:
-# print(os.rename('test.txt', 'test.py'))
+# print(os.rename('test.txt', '爬取豆瓣电影Top250.py'))
 # # 删除文件
-# print(os.remove('test.py'))
+# print(os.remove('爬取豆瓣电影Top250.py'))
 
 a = [x for x in os.listdir('.') if os.path.isdir(x)]
 print(a)

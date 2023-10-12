@@ -15,12 +15,6 @@ def scrape_api(url):
         print('error occurred while scraping %s', url)
 
 
-
-
-
-
-
-
 def main():
     url = f"https://www.qidian.com/ajax/Free/getSysTime?_csrfToken=8hwWmbEStrilYhovGRFTsyLxTlLHBj5auKvGlzTQ"
     # header = {"User-Agent":"Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/116.0.0.0 Safari/537.36"}
