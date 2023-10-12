@@ -40,7 +40,7 @@ def main():
             writer.writerow(dic)
 
 
-with open("scrape.csv","w", encoding='utf-8-sig', newline='') as f:
+with open("scrape.csv", "w", encoding='utf-8-sig', newline='') as f:
     writer = csv.DictWriter(f, fieldnames=["ID", "名称", "类型", "地区", "时长", "上映时间", "评分"])
     writer.writeheader()        # 将字段写入csv格式文件首行
     if __name__ == '__main__':
