@@ -13,6 +13,8 @@
 # print(L[-20:-10])   # 从倒数20个开始取到倒数第10个
 # print(L[:])         # 什么都不写，只写[:]就可以原样复制一个list
 
+
+
 # 取出字符串的空格  切片+递归
 def trim(s):
 
@@ -24,6 +26,7 @@ def trim(s):
         return trim(s[:-1])
 
 src = "123asd4156  "
-print(trim(src))
+# print(trim(src))
 print(src.strip())          # strip()字符串切割
 print(src.strip('12'))
+print(src[2:6])

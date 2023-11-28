@@ -5,6 +5,7 @@ proxies = {
     'http': 'http://' + proxy,
     'https': 'http://' + proxy,
 }
+
 try:
     response = requests.get('https://httpbin.org/get', proxies=proxies)
     print(response.text)
