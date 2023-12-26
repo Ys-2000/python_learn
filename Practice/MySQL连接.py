@@ -11,7 +11,7 @@ conn = mysql.connector.connect(
 cursor = conn.cursor()
 
 # 执行查询
-query = "SELECT * FROM user LIMIT 1"
+query = "SELECT * FROM user LIMIT 5"
 cursor.execute(query)
 
 # 获取查询结果

@@ -1,7 +1,9 @@
 import requests, logging
 
 INDEX_URL = 'https://spa1.scrape.center/api/movie/?limit={limit}&offset={offset}'
-header = {"User-Agent" : "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/116.0.0.0 Safari/537.36"}
+header = {
+    "User-Agent" : "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/116.0.0.0 Safari/537.36"
+}
 
 logging.basicConfig(level = logging.INFO,
                     format='%(asctime)s - %(levelname)s: %(message)s')

@@ -14,20 +14,21 @@
 # # compose(func, array) 函数接受一个函数 func 和一个包含两个元素的列表 array。它将列表中的前两个元素作为参数传递给函数 func 并返回结果。
 # # 在主程序中，你调用 compose(plus, [1, 2])，它会将函数 plus 和列表 [1, 2] 传递给 compose 函数。compose 函数将调用 plus(1, 2) 并返回结果 3。
 
-# def f(x):
-#     return x * x
-#
-#
+def f(x):
+    return x * x
+
+
 # # map将传入的函数依次作用到序列的每个元素，并把结果作为新的Iterator返回
 # r = map(f, [1, 2, 3, 4, 5, 6, 7, 8, 9])
 # # Iterator是惰性序列，因此通过list()函数让它把整个序列都计算出来并返回一个list
 # print(list(r))
-# # try:
-# #     while True:
-# #         print(next(r))
-# # except StopIteration:
-# #     pass
-#
+
+# try:
+#     while True:
+#         print(next(r))
+# except StopIteration:
+#     pass
+
 # # list所有数字转为字符串
 # print(list(map(str, [1, 2, 3, 4, 5, 6, 7, 8, 9])))
 
@@ -101,20 +102,20 @@
 #     print('测试失败!')
 
 
-# sorted函数应用
-a = sorted([36, 5, -12, 9, -21], key=abs,reverse=True)
-s = sorted(['bob', 'about', 'Zoo', 'Credit'],key=str.lower)
-
-# 练习  假设我们用一组tuple表示学生名字和成绩 请用sorted()对上述列表分别按名字排序：
-L = [('Bob', 75), ('Adam', 92), ('Bart', 66), ('Lisa', 88)]
-
-
-def by_name(t):
-    # t[0]按照名称排序，t[1]按照成绩排序 ，倒序添加参数：reverse=True
-    return t[1]     # -t[1]可进行倒序
-
-
-L2 = sorted(L,key=by_name)
-print(L2)
+# # sorted函数应用
+# a = sorted([36, 5, -12, 9, -21], key=abs,reverse=True)
+# s = sorted(['bob', 'about', 'Zoo', 'Credit'],key=str.lower)
+#
+# # 练习  假设我们用一组tuple表示学生名字和成绩 请用sorted()对上述列表分别按名字排序：
+# L = [('Bob', 75), ('Adam', 92), ('Bart', 66), ('Lisa', 88)]
+#
+#
+# def by_name(t):
+#     # t[0]按照名称排序，t[1]按照成绩排序 ，倒序添加参数：reverse=True
+#     return t[1]     # -t[1]可进行倒序
+#
+#
+# L2 = sorted(L,key=by_name)
+# print(L2)
 
 
