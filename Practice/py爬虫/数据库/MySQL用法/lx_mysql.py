@@ -1,4 +1,3 @@
-import pymysql
 
 # id = '20120002'
 # user = 'Bob'

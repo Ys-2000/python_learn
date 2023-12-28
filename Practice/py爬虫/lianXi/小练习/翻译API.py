@@ -20,6 +20,6 @@ headers = {"User-Agent":"Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/5
 # resp = requests.get(url, headers=headers)
 resp = requests.post(url, headers=headers, data=dat)
 # print(resp.text)
-print(resp.json())
+print(resp.json()['data'][0]['v'])
 resp.close()    # 关闭爬虫程序
 

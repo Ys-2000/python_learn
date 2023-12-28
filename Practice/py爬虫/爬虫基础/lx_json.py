@@ -13,7 +13,7 @@ import json
 # '''
 # print(str)
 # print(type(str))
-# data = json.loads(str1)      # 将 JSON 文本字符串转为 JSON 对象
+# data = json.loads(str1)      # 将 JSON 文本字符串转为 python字典对象
 # print(data)
 # print(type(data))
 
