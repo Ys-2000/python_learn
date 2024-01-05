@@ -5,9 +5,9 @@ import scrapy
 from tutorial.items import QuoteItem
 
 class QuotesSpider(scrapy.Spider):
-    name = "quotes"
-    allowed_domains = ["quotes.toscrape.com"]
-    start_urls = ["https://quotes.toscrape.com"]
+    name = "quotes"         #爬虫的名称
+    allowed_domains = ["quotes.toscrape.com"]       # 允许爬取的域名
+    start_urls = ["https://quotes.toscrape.com"]    # 起始URl列表
 
     def parse(self, response):
         quotes = response.css(".quote")
@@ -19,6 +19,6 @@ class QuotesSpider(scrapy.Spider):
             yield item
         next = response.css('.pager .next a::attr(href)').extract_first()
         url = response.urljoin(next)        # urljoin()方法将相对URL构造成绝对的URL
-        yield scrapy.Request(url=url,callback=self.parse)
+        yield scrapy.Request(url=url, callback=self.parse)
 
 

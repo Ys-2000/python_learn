@@ -1,5 +1,6 @@
 import scrapy
 
+
 class MySpider(scrapy.Spider):
     name = 'example'
     start_urls = ['http://example.com']

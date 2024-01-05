@@ -29,7 +29,7 @@ class TextPipeline(object):
 
 
 class MongoPipeline(object):
-    def __init__(self,mongo_uri, mongo_db):
+    def __init__(self, mongo_uri, mongo_db):
         self.mongo_uri = mongo_uri
         self.mongo_db = mongo_db
 
@@ -37,7 +37,7 @@ class MongoPipeline(object):
     @classmethod
     def from_crawler(cls, crawler):
         return cls(
-            mongo_uri = crawler.settings.get('MONGO_URL'),
+            mongo_uri = crawler.settings.get('MONGO_URI'),
             mongo_db = crawler.settings.get('MONGO_DB')
         )
 
@@ -54,3 +54,5 @@ class MongoPipeline(object):
 
     def close_spider(self,spider):
         self.client.close()
+
+

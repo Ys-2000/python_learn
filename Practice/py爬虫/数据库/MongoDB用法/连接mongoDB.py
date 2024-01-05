@@ -1,7 +1,7 @@
 import pymongo
 client = pymongo.MongoClient('mongodb://localhost:27017/')
 db = client['testdb']       # 选择数据库
-collection = db['qwe']      # 选择数据库集合
+collection = db['qwewq']      # 选择数据库集合
 
 
 # # ~~~插入数据~~~
@@ -46,10 +46,10 @@ collection = db['qwe']      # 选择数据库集合
 
 # ~~~删除数据~~~
 # collection.delete_one({'name': '松发其'})              # 删除一条数据
-data_del = {
-    'name':{'$in': ['zhansan', '测试', '小明']}
-}
-collection.delete_many(data_del)                 # 删除多条数据
+# data_del = {
+#     'name':{'$in': ['zhansan', '测试', '小明']}
+# }
+# collection.delete_many(data_del)                 # 删除多条数据
 
 
 # 查询所有数据
