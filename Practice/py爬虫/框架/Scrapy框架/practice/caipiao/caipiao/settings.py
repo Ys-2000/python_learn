@@ -1,4 +1,4 @@
-# Scrapy settings for tutorial project
+# Scrapy settings for caipiao project
 #
 # For simplicity, this file contains only settings considered important or
 # commonly used. You can find more settings consulting the documentation:
@@ -7,28 +7,14 @@
 #     https://docs.scrapy.org/en/latest/topics/downloader-middleware.html
 #     https://docs.scrapy.org/en/latest/topics/spider-middleware.html
 
-# # 避免在程序运行的时候打印log日志信息
-# LOG_LEVEL = 'WARNING'
-# ROBOTSTXT_OBEY = False
+BOT_NAME = "caipiao"
 
-BOT_NAME = "tutorial"
-
-SPIDER_MODULES = ["tutorial.spiders"]
-NEWSPIDER_MODULE = "tutorial.spiders"
-
-ITEM_PIPELINES = {
-    'tutorial.pipelines.TextPipeline': 300,     # 序号越小优先级越高
-    'tutorial.pipelines.MongoPipeline': 400,
-}
-MONGO_URI = 'localhost'
-MONGO_DB = 'tutorial'
-
-
-
+SPIDER_MODULES = ["caipiao.spiders"]
+NEWSPIDER_MODULE = "caipiao.spiders"
 
 
 # Crawl responsibly by identifying yourself (and your website) on the user-agent
-#USER_AGENT = "tutorial (+http://www.yourdomain.com)"
+#USER_AGENT = "caipiao (+http://www.yourdomain.com)"
 
 # Obey robots.txt rules
 ROBOTSTXT_OBEY = True
@@ -59,13 +45,13 @@ ROBOTSTXT_OBEY = True
 # Enable or disable spider middlewares
 # See https://docs.scrapy.org/en/latest/topics/spider-middleware.html
 #SPIDER_MIDDLEWARES = {
-#    "tutorial.middlewares.TutorialSpiderMiddleware": 543,
+#    "caipiao.middlewares.CaipiaoSpiderMiddleware": 543,
 #}
 
 # Enable or disable downloader middlewares
 # See https://docs.scrapy.org/en/latest/topics/downloader-middleware.html
 #DOWNLOADER_MIDDLEWARES = {
-#    "tutorial.middlewares.TutorialDownloaderMiddleware": 543,
+#    "caipiao.middlewares.CaipiaoDownloaderMiddleware": 543,
 #}
 
 # Enable or disable extensions
@@ -77,7 +63,7 @@ ROBOTSTXT_OBEY = True
 # Configure item pipelines
 # See https://docs.scrapy.org/en/latest/topics/item-pipeline.html
 #ITEM_PIPELINES = {
-#    "tutorial.pipelines.TutorialPipeline": 300,
+#    "caipiao.pipelines.CaipiaoPipeline": 300,
 #}
 
 # Enable and configure the AutoThrottle extension (disabled by default)

@@ -1,4 +1,4 @@
-# Scrapy settings for tutorial project
+# Scrapy settings for game project
 #
 # For simplicity, this file contains only settings considered important or
 # commonly used. You can find more settings consulting the documentation:
@@ -7,28 +7,16 @@
 #     https://docs.scrapy.org/en/latest/topics/downloader-middleware.html
 #     https://docs.scrapy.org/en/latest/topics/spider-middleware.html
 
-# # 避免在程序运行的时候打印log日志信息
-# LOG_LEVEL = 'WARNING'
-# ROBOTSTXT_OBEY = False
+BOT_NAME = "game"
 
-BOT_NAME = "tutorial"
+SPIDER_MODULES = ["game.spiders"]
+NEWSPIDER_MODULE = "game.spiders"
 
-SPIDER_MODULES = ["tutorial.spiders"]
-NEWSPIDER_MODULE = "tutorial.spiders"
-
-ITEM_PIPELINES = {
-    'tutorial.pipelines.TextPipeline': 300,     # 序号越小优先级越高
-    'tutorial.pipelines.MongoPipeline': 400,
-}
-MONGO_URI = 'localhost'
-MONGO_DB = 'tutorial'
-
-
-
-
+LOG_LEVEL = 'WARNING'      # 设置后仅显示WARNING及以上的会被打印
+# 日志级别：DEBUG、INFO、WARNING、ERROR、CRITICAL和FATAL。
 
 # Crawl responsibly by identifying yourself (and your website) on the user-agent
-#USER_AGENT = "tutorial (+http://www.yourdomain.com)"
+#USER_AGENT = "game (+http://www.yourdomain.com)"
 
 # Obey robots.txt rules
 ROBOTSTXT_OBEY = True
@@ -59,13 +47,13 @@ ROBOTSTXT_OBEY = True
 # Enable or disable spider middlewares
 # See https://docs.scrapy.org/en/latest/topics/spider-middleware.html
 #SPIDER_MIDDLEWARES = {
-#    "tutorial.middlewares.TutorialSpiderMiddleware": 543,
+#    "game.middlewares.GameSpiderMiddleware": 543,
 #}
 
 # Enable or disable downloader middlewares
 # See https://docs.scrapy.org/en/latest/topics/downloader-middleware.html
 #DOWNLOADER_MIDDLEWARES = {
-#    "tutorial.middlewares.TutorialDownloaderMiddleware": 543,
+#    "game.middlewares.GameDownloaderMiddleware": 543,
 #}
 
 # Enable or disable extensions
@@ -76,9 +64,11 @@ ROBOTSTXT_OBEY = True
 
 # Configure item pipelines
 # See https://docs.scrapy.org/en/latest/topics/item-pipeline.html
-#ITEM_PIPELINES = {
-#    "tutorial.pipelines.TutorialPipeline": 300,
-#}
+ITEM_PIPELINES = {
+    # key  就是管道的路径      value 是管道的优先级，数值越小优先级越高
+   "game.pipelines.GamePipeline": 300,
+   "game.pipelines.NewPipeline": 299,
+}
 
 # Enable and configure the AutoThrottle extension (disabled by default)
 # See https://docs.scrapy.org/en/latest/topics/autothrottle.html
