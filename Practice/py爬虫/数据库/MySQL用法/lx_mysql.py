@@ -21,7 +21,7 @@
 #     db.rollback()                           # 回滚事务
 # db.close()
 
-
+import pymysql
 # 动态插入
 db = pymysql.connect(host='localhost',user='root', password='000000', port=3306, db='spiders')
 cursor = db.cursor()

@@ -17,15 +17,15 @@ cursor = db.cursor()
 # sql = "create table beautyGirls (name char(20) not null, age int)"
 
 # 插入一条记录
-# sql = "insert into beautyGirls(name, age) values ('Mrs.cang', 18)"
+sql = "insert into beautyGirls(name, age) values ('张三', 12)"
 
-# 删除一条记录
-sql = "delete from beautyGirls where age = '%d'" % (18)
+# # 删除一条记录
+# sql = "delete from beautyGirls where age = '%d'" % (18)
 
 try:
-    cursor.execute(sql)
-    # 提交事务
-    db.commit()
+    cursor.execute(sql)     # 执行sql
+
+    db.commit()  # 提交事务
 except:
     # 回滚
     db.rollback()

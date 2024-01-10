@@ -12,11 +12,25 @@ BOT_NAME = "caipiao"
 SPIDER_MODULES = ["caipiao.spiders"]
 NEWSPIDER_MODULE = "caipiao.spiders"
 
+LOG_LEVEL = "WARNING"      # 设置后仅显示WARNING及以上的会被打印
+# 日志级别：DEBUG、INFO、WARNING、ERROR、CRITICAL和FATAL。
+
+# 配置mysql
+
+MYSQL = {
+   "host": "localhost",
+   "port": 3306,
+   "user": "root",
+   "password": "000000",
+   "database": "spider",
+}
+
 
 # Crawl responsibly by identifying yourself (and your website) on the user-agent
 #USER_AGENT = "caipiao (+http://www.yourdomain.com)"
 
 # Obey robots.txt rules
+# 默认是True，设置为False表示不遵守robots协议
 ROBOTSTXT_OBEY = True
 
 # Configure maximum concurrent requests performed by Scrapy (default: 16)
@@ -62,9 +76,12 @@ ROBOTSTXT_OBEY = True
 
 # Configure item pipelines
 # See https://docs.scrapy.org/en/latest/topics/item-pipeline.html
-#ITEM_PIPELINES = {
-#    "caipiao.pipelines.CaipiaoPipeline": 300,
-#}
+ITEM_PIPELINES = {
+   # key  就是管道的路径      value 是管道的优先级，数值越小优先级越高
+   "caipiao.pipelines.CaipiaoPipeline": 300,
+   "caipiao.pipelines.CaipiaoMySQLPipeline": 301,
+   "caipiao.pipelines.CaipiaoMongoDBPipeline": 302,
+}
 
 # Enable and configure the AutoThrottle extension (disabled by default)
 # See https://docs.scrapy.org/en/latest/topics/autothrottle.html

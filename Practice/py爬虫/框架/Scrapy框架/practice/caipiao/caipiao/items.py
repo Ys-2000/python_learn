@@ -8,5 +8,7 @@ import scrapy
 
 class CaipiaoItem(scrapy.Item):
     # define the fields for your item here like:
-    # name = scrapy.Field()
-    pass
+    # name = scrapy.Field()         # name相当于字典的key
+    qihao = scrapy.Field()
+    red_ball = scrapy.Field()
+    blue_ball = scrapy.Field()
