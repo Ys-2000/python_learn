@@ -16,4 +16,4 @@ def main(num_agents=100, select_random=False):
 
 
 if __name__ == '__main__':
-    print(main())
+    main()
