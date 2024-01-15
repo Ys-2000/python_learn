@@ -1,6 +1,6 @@
 from selenium import webdriver
 from selenium.webdriver.common.by import By
-import time
+import time,random
 
 browser = webdriver.Edge()
 browser.get('https://www.taobao.com')

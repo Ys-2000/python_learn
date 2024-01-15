@@ -2,18 +2,19 @@
 #
 # See documentation in:
 # https://docs.scrapy.org/en/latest/topics/spider-middleware.html
+import random
+import time
 
 from scrapy import signals
-from boss.request import SeleniumRequest
 from selenium import webdriver
-from scrapy.http.response.html import HtmlResponse
-import time
+from selenium.webdriver.common.by import By
+import ddddocr
 
 # useful for handling different item types with a single interface
 from itemadapter import is_item, ItemAdapter
 
 
-class BossSpiderMiddleware:
+class ChaojiyingSpiderMiddleware:
     # Not all methods need to be defined. If a method is not defined,
     # scrapy acts as if the spider middleware does not modify the
     # passed objects.
@@ -60,41 +61,34 @@ class BossSpiderMiddleware:
         spider.logger.info("Spider opened: %s" % spider.name)
 
 
-class BossDownloaderMiddleware:
+class ChaojiyingDownloaderMiddleware:
+    # Not all methods need to be defined. If a method is not defined,
+    # scrapy acts as if the downloader middleware does not modify the
+    # passed objects.
 
     @classmethod
     def from_crawler(cls, crawler):
-        # 用于自定义创建爬虫中间件函数
+        # This method is used by Scrapy to create your spiders.
         s = cls()
         crawler.signals.connect(s.spider_opened, signal=signals.spider_opened)
-        #                        # 执行XXX功能        在什么时间
-        crawler.signals.connect(s.spider_close, signal=signals.spider_closed)   # 自定义创建了spider_close函数
         return s
 
     def process_request(self, request, spider):
-        # 所有的请求都会到我这里
-        # 需要进行判断，判断出是否需要selenium来处理请求
-        # 开始selenum的操作，返回页面源代码组装的response
-        # isinstance 判断xxx是不是xxx类型的
-        if isinstance(request, SeleniumRequest):
-            # selenium来处理请求
-            self.web.get(request.url)
-            time.sleep(10)  # 等待10s
-            # 封装一个响应对象
-            page_source = self.web.page_source
-            return HtmlResponse(
-                url = request.url,
-                status = 200,
-                body = page_source,
-                request = request,
-                encoding = "utf-8"
-            )
-        else:
-            return None
+        if not request.cookies:             # 判断是否有cookies
+            request.cookies = self.coolies
+        return None
 
     def spider_opened(self, spider):
-        self.web = webdriver.Chrome()
-        self.web.maximize_window()
+        web = webdriver.Chrome()
+        web.get("https://www.chaojiying.com/user/login/")
+        web.find_element(By.XPATH,'/html/body/div[3]/div/div[3]/div[1]/form/p[1]/input').send_keys("18264033257")
+        web.find_element(By.XPATH,'/html/body/div[3]/div/div[3]/div[1]/form/p[2]/input').send_keys("Ys204476")
+        img = web.find_element(By.XPATH, '/html/body/div[3]/div/div[3]/div[1]/form/div/img')
+        ocr = ddddocr.DdddOcr(show_ad=False)
+        verify_code = ocr.classification(img.screenshot_as_base64)      # img.screenshot_as_base64
 
-    def spider_close(self, spider):     # 在爬虫关闭时自动调用该函数
-        self.web.close()
+        web.find_element(By.XPATH, '/html/body/div[3]/div/div[3]/div[1]/form/p[3]/input').send_keys(verify_code)
+        web.find_element(By.XPATH, '/html/body/div[3]/div/div[3]/div[1]/form/p[4]/input').click()
+        time.sleep(random.uniform(2,3))
+        # web.get_cookies()拿到的cookie格式不正常：[{name:xxx,value:xxx},{},{}],需要做处理
+        self.coolies = {item['name']: item['value'] for item in web.get_cookies()}
