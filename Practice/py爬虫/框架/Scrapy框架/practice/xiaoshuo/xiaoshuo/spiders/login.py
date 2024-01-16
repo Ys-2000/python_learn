@@ -22,20 +22,31 @@ class LoginSpider(scrapy.Spider):
         #     cookies= dic,
         # )
 
-        # 方案二: 走登录流程
+        # 方案二：走登录流程
         url = "https://passport.17k.com/ck/user/login"
         loginName = "18264033257"
         password = "Ys204476"
-        yield scrapy.Request(
-            url = url,
-            method= "post",
-            body=f"loginName={loginName}&password={password}",
+
+        # # 发送post请求的第一个方案(不好)
+        # yield scrapy.Request(
+        #     url = url,
+        #     method= "post",
+        #     body=f"loginName={loginName}&password={password}",
+        #     callback=self.parse
+        # )
+
+        # 发送POST请求的第二个方案(常用)
+        yield scrapy.FormRequest(
+            url=url,
+            formdata={
+                "loginName":loginName,
+                "password":password
+            },
             callback=self.parse
         )
 
 
     def parse(self, response, **kwargs):
-        # 发送post请求的第一个方案(不好)
         yield scrapy.Request(
             url=LoginSpider.start_urls[0],
             callback=self.parse_detail

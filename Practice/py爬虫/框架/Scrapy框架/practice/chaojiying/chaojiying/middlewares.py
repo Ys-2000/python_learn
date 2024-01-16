@@ -74,21 +74,23 @@ class ChaojiyingDownloaderMiddleware:
         return s
 
     def process_request(self, request, spider):
-        if not request.cookies:             # 判断是否有cookies
+        if not request.cookies:             # 判断是否有cookies 如果没有设置一下
             request.cookies = self.coolies
         return None
 
     def spider_opened(self, spider):
         web = webdriver.Chrome()
         web.get("https://www.chaojiying.com/user/login/")
-        web.find_element(By.XPATH,'/html/body/div[3]/div/div[3]/div[1]/form/p[1]/input').send_keys("18264033257")
+        web.find_element(By.XPATH,'/html/body/div[3]/div/div[3]/div[1]/form/p[1]/input').send_keys("Ys2091")
         web.find_element(By.XPATH,'/html/body/div[3]/div/div[3]/div[1]/form/p[2]/input').send_keys("Ys204476")
         img = web.find_element(By.XPATH, '/html/body/div[3]/div/div[3]/div[1]/form/div/img')
         ocr = ddddocr.DdddOcr(show_ad=False)
-        verify_code = ocr.classification(img.screenshot_as_base64)      # img.screenshot_as_base64
+        verify_code = ocr.classification(img.screenshot_as_base64)      # img.screenshot_as_base64获取图片base64码
 
         web.find_element(By.XPATH, '/html/body/div[3]/div/div[3]/div[1]/form/p[3]/input').send_keys(verify_code)
         web.find_element(By.XPATH, '/html/body/div[3]/div/div[3]/div[1]/form/p[4]/input').click()
         time.sleep(random.uniform(2,3))
         # web.get_cookies()拿到的cookie格式不正常：[{name:xxx,value:xxx},{},{}],需要做处理
         self.coolies = {item['name']: item['value'] for item in web.get_cookies()}
+        time.sleep(10)
+        web.close()

@@ -12,14 +12,14 @@ BOT_NAME = "game"
 SPIDER_MODULES = ["game.spiders"]
 NEWSPIDER_MODULE = "game.spiders"
 
-LOG_LEVEL = 'WARNING'      # 设置后仅显示WARNING及以上的会被打印
-# 日志级别：DEBUG、INFO、WARNING、ERROR、CRITICAL和FATAL。
 
 # Crawl responsibly by identifying yourself (and your website) on the user-agent
 #USER_AGENT = "game (+http://www.yourdomain.com)"
 
 # Obey robots.txt rules
-ROBOTSTXT_OBEY = True
+ROBOTSTXT_OBEY = False
+LOG_LEVEL = 'WARNING'      # 设置后仅显示WARNING及以上的会被打印
+# 日志级别：DEBUG、INFO、WARNING、ERROR、CRITICAL和FATAL。
 
 # Configure maximum concurrent requests performed by Scrapy (default: 16)
 #CONCURRENT_REQUESTS = 32
@@ -67,7 +67,7 @@ ROBOTSTXT_OBEY = True
 ITEM_PIPELINES = {
     # key  就是管道的路径      value 是管道的优先级，数值越小优先级越高
    "game.pipelines.GamePipeline": 300,
-   "game.pipelines.NewPipeline": 299,
+   # "game.pipelines.NewPipeline": 299,
 }
 
 # Enable and configure the AutoThrottle extension (disabled by default)

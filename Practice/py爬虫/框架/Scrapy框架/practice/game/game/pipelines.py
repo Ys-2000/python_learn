@@ -20,5 +20,5 @@ class GamePipeline:     # 随便定义一个类
 class NewPipeline:
     def process_item(self, item, spider):
         # print("hello,world!")
-        item['love'] = "hello,world!"
+        item['test'] = "hello,world!"
         return item     # return会传到下一个管道
