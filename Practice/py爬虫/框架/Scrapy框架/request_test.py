@@ -3,8 +3,12 @@ import requests
 
 url = "https://www.tupianzj.com/bizhi/DNmeinv/"
 headers = {
-    "User-Agent":"Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36",
-    "Cookie":"t=01439e9bd540f7144aa7c44649b8e9a3; r=1685; Hm_lvt_f5329ae3e00629a7bb8ad78d0efb7273=1704864241,1705390019; Hm_lpvt_f5329ae3e00629a7bb8ad78d0efb7273=1705390019",
+    "Accept": "text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3;q=0.7",
+    "Accept-Encoding": "gzip, deflate, br",
+    "Accept-Language": "zh-CN,zh;q=0.9",
+    "Cache-Control": "max-age=0",
+    "Cookie": "t=01439e9bd540f7144aa7c44649b8e9a3; r=1685; Hm_lvt_f5329ae3e00629a7bb8ad78d0efb7273=1704864241,1705390019; Hm_lpvt_f5329ae3e00629a7bb8ad78d0efb7273=1705470447",
+    "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36"
 }
 
 

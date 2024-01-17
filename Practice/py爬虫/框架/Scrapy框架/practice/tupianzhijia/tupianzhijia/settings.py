@@ -1,19 +1,9 @@
-# Scrapy settings for tupianzhijia project
-#
-# For simplicity, this file contains only settings considered important or
-# commonly used. You can find more settings consulting the documentation:
-#
-#     https://docs.scrapy.org/en/latest/topics/settings.html
-#     https://docs.scrapy.org/en/latest/topics/downloader-middleware.html
-#     https://docs.scrapy.org/en/latest/topics/spider-middleware.html
+
 
 BOT_NAME = "tupianzhijia"
 
 SPIDER_MODULES = ["tupianzhijia.spiders"]
 NEWSPIDER_MODULE = "tupianzhijia.spiders"
-
-LOG_LEVEL = "WARNING"
-
 
 # Crawl responsibly by identifying yourself (and your website) on the user-agent
 #USER_AGENT = "tupianzhijia (+http://www.yourdomain.com)"
@@ -21,6 +11,7 @@ LOG_LEVEL = "WARNING"
 # Obey robots.txt rules
 # ROBOTSTXT_OBEY = True
 ROBOTSTXT_OBEY = False
+LOG_LEVEL = "WARNING"
 
 # Configure maximum concurrent requests performed by Scrapy (default: 16)
 #CONCURRENT_REQUESTS = 32
@@ -53,9 +44,9 @@ ROBOTSTXT_OBEY = False
 
 # Enable or disable downloader middlewares
 # See https://docs.scrapy.org/en/latest/topics/downloader-middleware.html
-#DOWNLOADER_MIDDLEWARES = {
+# DOWNLOADER_MIDDLEWARES = {
 #    "tupianzhijia.middlewares.TupianzhijiaDownloaderMiddleware": 543,
-#}
+# }
 
 # Enable or disable extensions
 # See https://docs.scrapy.org/en/latest/topics/extensions.html
