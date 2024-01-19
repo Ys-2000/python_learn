@@ -36,7 +36,7 @@ class ErshoucheSpider(scrapy.Spider):
         #     # print(link.text.replace(" ","").strip(),link.url)
         #     yield scrapy.Request(
         #         url=link.url,
-        #         headers=self.headers,
+        #         headers=self.headers
         #         callback=self.parse_detail,      # parse_detail是详情页解析函数  def parse_detail(self, response, **kwargs):
         #     )
         print(response.url)

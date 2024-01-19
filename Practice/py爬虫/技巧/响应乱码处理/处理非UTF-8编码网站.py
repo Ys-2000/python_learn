@@ -18,3 +18,4 @@ headers = {
 response = requests.get(url, headers=headers).content.decode('gbk')
 # 这是处理非 UTF-8 编码响应的常见方法，特别是对于一些使用特定地区编码（如中文网站常用的 gbk 或 gb2312）的网站。
 print(response)
+

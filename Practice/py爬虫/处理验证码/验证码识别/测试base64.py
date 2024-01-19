@@ -5,7 +5,7 @@ import base64
 s = ''
 # 需要使用base64.b64decode()将base64数据处理成字节
 bs = base64.b64decode(s)
-with open('tu.png','wb') as f:
+with open('../img/yzm.jpg','wb') as f:
     f.write(bs)
 
 

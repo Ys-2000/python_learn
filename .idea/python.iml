@@ -5,6 +5,7 @@
       <sourceFolder url="file://$MODULE_DIR$/Practice/py爬虫/框架/Scrapy框架/practice/boss" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/Practice/py爬虫/框架/Scrapy框架/practice/caipiao" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/Practice/py爬虫/框架/Scrapy框架/practice/game" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/Practice/py爬虫/处理验证码" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/Practice/py爬虫/框架/Scrapy框架/practice/douban" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/Practice/py爬虫/框架/Scrapy框架/practice/tupianzhijia" isTestSource="false" />
     </content>
