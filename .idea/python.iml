@@ -8,6 +8,7 @@
       <sourceFolder url="file://$MODULE_DIR$/Practice/py爬虫/处理验证码" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/Practice/py爬虫/框架/Scrapy框架/practice/douban" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/Practice/py爬虫/框架/Scrapy框架/practice/tupianzhijia" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/Practice/py爬虫/框架/Scrapy框架/practice/quan_ben_xiaoshuowang" isTestSource="false" />
     </content>
     <orderEntry type="inheritedJdk" />
     <orderEntry type="sourceFolder" forTests="false" />

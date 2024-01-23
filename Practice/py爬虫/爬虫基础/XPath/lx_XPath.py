@@ -11,6 +11,22 @@ text = '''
  </div>
 '''
 
+# # 使用 lxml 的 HTML 解析器进行解析
+# parsed_html = html.fromstring(response)
+#
+# # 使用 XPath 提取内容
+# # 以提取所有文本内容为例
+# text_content = parsed_html.xpath("//div[@class='wrapper-item']/text()")
+# for text in text_content:
+#     print(text.strip())
+# # print(text_content)
+#
+# # print(html.tostring(parsed_html,encoding="unicode"))
+
+
+
+
+
 # # 第⼀种⽅式，直接在python代码中解析html字符串
 # html = etree.HTML(text)
 # result = etree.tostring(html)

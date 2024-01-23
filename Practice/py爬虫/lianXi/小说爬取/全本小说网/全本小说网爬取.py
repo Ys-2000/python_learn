@@ -2,7 +2,7 @@ import requests
 import brotli
 from bs4 import BeautifulSoup
 from urllib.parse import urljoin
-
+import time,random
 
 
 def requ(url):
@@ -32,7 +32,15 @@ def requ(url):
 def chapter_requ(response):
     soup = BeautifulSoup(response, 'lxml')
     text = soup.find("div",id="content").get_text(strip=True)
-    print(text)
+
+    seve_xs(text.replace("全本小说网 www.xqb5200.com，最快更新修罗天帝 ！",''))
+
+
+
+# 数据存储
+def seve_xs(text):
+    with open("xs.txt", mode="a",encoding="utf-8") as f:
+        f.write(text+"\n")
 
 
 # 章节页面
@@ -43,7 +51,12 @@ dl = soup.find("div", id="list").find("dl")
 dt_tags = dl.find_all("dt")
 
 if len(dt_tags) > 1:
-    for sibling in dt_tags[1].next_siblings:
+    for index, sibling in enumerate(dt_tags[1].next_siblings):
+        if index % 20 == 0 and index != 0:
+            # 每爬取20章，
+            xm = random.uniform(1,3)
+            time.sleep(xm)  # 休眠5秒
+            print(f"程序休眠{xm}秒！！！")
         if sibling.name == 'dd':
             if sibling.get_text(strip=True):  # 检查dd标签是否为空
                 a_tag = sibling.find("a")
@@ -52,9 +65,9 @@ if len(dt_tags) > 1:
                     href = a_tag.get('href', "无")
                     next_url = urljoin(main_url, href)
                     next_response = requ(next_url)
-                    print(catalog, next_url)
+                    seve_xs(catalog)
+                    print(catalog+" 爬取完成",next_url)
                     chapter_requ(next_response)
-                    break
         elif sibling.name == 'dt':
             juan = sibling.get_text(strip=True) if sibling.get_text(strip=True) else ''
             print(juan)
