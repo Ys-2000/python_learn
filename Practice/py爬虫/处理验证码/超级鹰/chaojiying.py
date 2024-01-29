@@ -8,7 +8,7 @@ class Chaojiying_Client(object):
 
     def __init__(self, username, password, soft_id):
         self.username = username
-        password =  password.encode('utf8')
+        password = password.encode('utf8')
         self.password = md5(password).hexdigest()
         self.soft_id = soft_id
         self.base_params = {

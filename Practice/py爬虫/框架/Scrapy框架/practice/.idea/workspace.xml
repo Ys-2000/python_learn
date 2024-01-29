@@ -2,12 +2,8 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="61c46c46-7721-4e6e-889f-7c0107501d4e" name="变更" comment="">
-      <change afterPath="$PROJECT_DIR$/myScrapy/myScrapy/start.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/myScrapy/myScrapy/items.py" beforeDir="false" afterPath="$PROJECT_DIR$/myScrapy/myScrapy/items.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/myScrapy/myScrapy/settings.py" beforeDir="false" afterPath="$PROJECT_DIR$/myScrapy/myScrapy/settings.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/myScrapy/myScrapy/spiders/demo.py" beforeDir="false" afterPath="$PROJECT_DIR$/myScrapy/myScrapy/spiders/demo.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/myScrapy/statr.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/tutorial/tutorial/settings.py" beforeDir="false" afterPath="$PROJECT_DIR$/tutorial/tutorial/settings.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../../../web框架/Django学习/DjangoTemp.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../../../.idea/python.iml" beforeDir="false" afterPath="$PROJECT_DIR$/../../../../../.idea/python.iml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -23,15 +19,15 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "RunOnceActivity.OpenProjectViewOnStart": "true",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "WebServerToolWindowFactoryState": "false",
-    "last_opened_file_path": "E:/my/study/bianc/python/Practice/py爬虫/框架/Scrapy框架/practice",
-    "settings.editor.selected.configurable": "preferences.fileTypes"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
+    &quot;last_opened_file_path&quot;: &quot;E:/my/study/bianc/python/Practice/py爬虫/框架/Scrapy框架/practice&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;preferences.fileTypes&quot;
   }
-}]]></component>
+}</component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="应用程序级" UseSingleDictionary="true" transferred="true" />
   <component name="TaskManager">
     <task active="true" id="Default" summary="默认任务">
@@ -41,6 +37,7 @@
       <option name="presentableId" value="Default" />
       <updated>1704692667356</updated>
       <workItem from="1704692668424" duration="11000" />
+      <workItem from="1706001245387" duration="14000" />
     </task>
     <servers />
   </component>

@@ -8,11 +8,12 @@ browser.maximize_window()
 
 try:
     browser.get('https://www.baidu.com')
-except TimeoutException:
+    browser.get('https://www.google.com/')
+except TimeoutException:            # 超时异常
     print("Time Out")
 try:
-    browser.find_element(By.ID, 'wd')
-except NoSuchElementException:
+    browser.find_element(By.ID, 'w2d')
+except NoSuchElementException:      # 元素未找到
     print("NO Element")
 finally:
     time.sleep(3)
