@@ -12,6 +12,10 @@ absolute_save_path = os.path.join(current_directory, relative_save_path)
 
 option = ChromeOptions()
 option.add_argument('--headless')        # 启用无头模式,不会调出浏览器窗口
+
+# # 添加实验性选项以使浏览器保持打开状态
+# option.add_experimental_option("detach", True)
+
 browser = webdriver.Chrome(options=option)
 browser.set_window_size(1366, 768)
 try:
