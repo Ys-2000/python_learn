@@ -8,6 +8,9 @@ import logging
 
 
 RESULTS_DIR = "./四大名著"      # 存储路径
+IDX = 1         # 排序用的
+book = None     # 书名
+
 # 配置基本的日志设置
 logging.basicConfig(level=logging.INFO,
                     format='%(asctime)s - %(levelname)s: %(message)s',
@@ -41,11 +44,12 @@ def parse_detail(detail_response):      # 获取书名和章节url
     soup = BeautifulSoup(detail_response,"lxml")
     book = soup.find("div",id="main_left").find("h1").text.strip()
     li_list = soup.find("div",class_="book-mulu").find("ul").find_all("li")
+    logging.info(f"******正在爬取{book}******")
     for li in li_list:
         href = li.find("a")["href"]
         detail_url = urljoin(INDEX_URL, href)
         yield book, detail_url
-        logging.info(f"******正在爬取{book}******")
+
 
 
 def parse_chapter(chapter):     # 解析章节
@@ -60,18 +64,19 @@ def parse_chapter(chapter):     # 解析章节
     return title, content
 
 
-def seve(book,title,content):
+def seve(IDX,book,title,content):
     book_path = join(RESULTS_DIR,book)
     exists(book_path) or makedirs(book_path)
-    file_path = join(book_path,f"{title}.txt")
+    file_path = join(book_path,f"{IDX}.{title}.txt")
     with open(file_path, "w" ,encoding="utf-8") as f:
         f.write(title+content)
-        logging.info(f"{book}-{title}爬取完成!")
+        logging.info(f"{book}-{title} 爬取完成!")
 
 
-book = None
+
 def main():
     global book
+    global IDX
     detail_urls = parse_index()     # 获取4大名著url
     for detail_url in list(detail_urls):
         detail_response = Crawl_detail(detail_url)
@@ -80,9 +85,12 @@ def main():
             if book is None:
                 book = book_name
             title, content = parse_chapter(chapter_url)     # 把章节url传给函数，返回章节标题与内容
-            seve(book, title, content)         # 保存数据
+            seve(IDX, book, title, content)         # 保存数据
+            IDX += 1    # 计数
             # continue  # TEST
+
         book = None     # 清空书名
+        IDX = 1     # 清空书名
         logging.info(f"{book}爬取完成,程序暂停3秒后继续爬取")
         time.sleep(3)
     logging.info("全部爬取完成,程序退出!")
