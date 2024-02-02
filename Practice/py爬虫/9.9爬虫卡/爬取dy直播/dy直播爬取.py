@@ -1,15 +1,25 @@
 import time
 import requests
 from bs4 import BeautifulSoup
-import re
 import json
 import logging
 import csv
-
+import os
 
 logging.basicConfig(level=logging.INFO,
                     format='%(asctime)s - %(levelname)s: %(message)s',
                     datefmt = '%Y-%m-%d %H:%M:%S')
+
+
+def save_data_to_csv(dic):
+    with open("data.csv", "a", encoding='utf-8', newline='') as f:
+        writer = csv.DictWriter(f, fieldnames=["分类", "标题", "主播", "热度"])
+        # writer = csv.DictWriter(f, fieldnames=data[0].keys() if data else [])
+        if os.path.getsize("data.csv") == 0:  # 如果文件为空
+            writer.writeheader()  # 写入标题
+        # writer.writeheader()        # 将字段写入csv格式文件首行
+        writer.writerow(dic)
+        logging.info(f"{dic['主播']}--数据保存成功")
 
 
 headers = {
@@ -78,7 +88,15 @@ def get_data(data):     #  获取直播数据
         title = i.get('rn','')  # title
         up = i.get('nn','')  # up
         heat = i.get('ol','')  # 热度
-        print(fl, up, title, heat)
+        dic = {
+            "分类":fl,
+            "标题":title,
+            "主播":up,
+            "热度":heat,
+        }
+        save_data_to_csv(dic)
+        # print(fl, up, title, heat)
+
 
 
 def rq_main_fl():
