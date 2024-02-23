@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>主页</title>
+    <style>
+        h1 { color:red }
+    </style>
+</head>
+<body>
+    <h1>这里是主页</h1>
+    <p>你好，{{ user }}</p>
+    <p>msg={{ msg }}</p>
+    <p>页面获取session:{{ request.session.currentUserName }}</p>
+    <a href="http://www.baidu.com/" target="_blank">百度一下</a>
+</body>
+</html>

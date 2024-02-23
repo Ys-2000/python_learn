@@ -114,7 +114,7 @@ def rq_main_fl():
         json_obj = json.loads(json_str)
 
         # 获取 cate1Name 和 customClassId 的值
-        first_categories = json_obj.get('firstCategory', [])    # 控制爬取一级目录 如何爬取前三  [:3]
+        first_categories = json_obj.get('firstCategory', [])    # 控制爬取一级目录 如: 爬取前三  [:3]
         for category in first_categories:
             cate1Name = category.get('cate1Name', '')          # 获取分类名称
             customClassId = category.get('customClassId', '')   # 获取分类ID

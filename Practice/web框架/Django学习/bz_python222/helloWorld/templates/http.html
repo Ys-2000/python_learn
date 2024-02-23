@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>请求测试</title>
+</head>
+<body>
+    <a href="/get?name=python222&pwd=123456" target="_blank">http get请求测试</a><br>
+    <br>
+    <form action="/post" method="post">
+    {% csrf_token %}<br>
+    name: <input type="text" name="name"><br>
+    pwd: <input type="text" name="pwd"><br>
+    <input type="submit" value="提交">
+    </form>
+</body>
+</html>
