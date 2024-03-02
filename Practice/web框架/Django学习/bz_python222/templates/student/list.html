@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>{{ title }}</title>
+</head>
+<body>
+    <h2>{{ title }}</h2>
+    <h3>当前在{{ page_obj.number }}页</h3>
+    <table border="1">
+    <tr>
+        <th>编号</th>
+        <th>姓名</th>
+        <th>年龄</th>
+    </tr>
+    {% for student in student_list %}
+    <tr>
+        <td>{{ student.id }}</td>
+        <td>{{ student.name }}</td>
+        <td>{{ student.age }}</td>
+    </tr>
+    {% endfor %}
+    </table>
+<br>
+{% if is_paginated %}
+    {% if page_obj.has_previous %}
+        <a href="/student/list?page={{ page_obj.previous_page_number }}">上一页</a>
+    {% endif %}
+
+    {% for current in paginator.page_range %}
+        {% if current == page_obj.number %}
+            <a href="/student/list?page={{ current }}"><b><font color="red">{{ current }}</font></b></a>
+        {% else %}
+            <a href="/student/list?page={{ current }}">{{ current }}</a>
+        {% endif %}
+    {% endfor %}
+
+    {% if page_obj.has_next %}      {#  has_next表示 是否还有下一页  #}
+        <a href="/student/list?page={{ page_obj.next_page_number }}">下一页</a>
+    {% endif %}
+{% endif %}
+</body>
+</html>

@@ -1,0 +1,71 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<h2>xxx</h2>
+{#<img src="{% static 'img/fj01.jpg' %}" alt="xxx">#}
+<hr>
+<p>字符串、数组的使用</p>
+<div>{{ n1 }}</div>
+<div>{{ n2 }}</div>
+<div>{{ n2.1 }}</div>
+<hr>
+
+<div>
+<p>组的循环、对象的使用</p>
+{% for item in n2 %}
+    <span>{{ item }}</span>
+{% endfor %}
+</div>
+<hr>
+
+<div>
+<p>循环获取对象的key</p>
+{% for item in n3.keys %}
+    <span>{{ item }}</span>
+{% endfor %}
+</div>
+<hr>
+
+<div>
+<p>循环获取对象的值</p>
+{% for item in n3.values %}
+    <span>{{ item }}</span>
+{% endfor %}
+</div>
+<hr>
+
+<div>
+<p>获取对象的键值</p>
+{% for item in n3.items %}
+    <li>{{ item }}</li>
+{% endfor %}
+</div>
+<hr>
+
+<div>
+<p>获取对象的键值 拆分</p>
+{% for k,v in n3.items %}
+    <li>{{ k }} = {{ v }}</li>
+{% endfor %}
+</div>
+<hr>
+
+<div>
+<p>判断语句</p>
+{% if n1 == "Ts" %}
+    <p>你好，{{ n1 }}。</p>
+    <p>你的职位是<b>{{ n2.0 }}</b>> ,性别:{{ n3.sex }} 年龄:{{ n3.age }}</p>
+{% else %}
+    <p>未找到该用户</p>
+{% endif %}
+</div>
+<hr>
+
+
+</body>
+</html>
