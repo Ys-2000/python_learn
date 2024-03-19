@@ -4,7 +4,7 @@ import os
 import csv
 import logging
 
-
+import subprocess
 
 
 # # 更换要下载的B站视频url
@@ -55,20 +55,31 @@ def main(url):
     audio_url = re.findall(audio_pattern, source_code)[0]
 
     # 下载视频
-    video_response = requests.get(video_url,headers=headers)
-    with open("video.m4s","wb") as f:
-        f.write(video_response.content)
-        logging.info("视频下载完成!")
+    video_response = requests.get(video_url,headers=headers, stream=True)
     # 下载音频
-    audio_response = requests.get(audio_url,headers=headers)
-    with open("audio.m4s","wb") as f:
-        f.write(audio_response.content)
-        logging.info("音频下载完成!")
+    audio_response = requests.get(audio_url,headers=headers, stream=True)
 
-    # 使用ffmpeg合并视频和音频
-    # os.system(f"ffmpeg -i audio.m4s -i video.m4s -acodec copy -vcodec copy {title}.mp4")
-    os.system(f"ffmpeg -i audio.m4s -i video.m4s -acodec copy -vcodec copy -loglevel quiet {title}.mp4")    # -loglevel quiet不会输出任何日志信息
+    # 使用 FFmpeg 合并视频和音频流，并输出为 MP4 文件
+    with open("output.mp4", "wb") as f:
+        # 使用管道方式传递视频流给 FFmpeg
+        video_process = subprocess.Popen(
+            ["ffmpeg", "-i", "pipe:", "-i", "pipe:", "-acodec", "copy", "-vcodec", "copy", "-f", "mp4", "pipe:"],
+            stdin=subprocess.PIPE, stdout=f)
+        # 将视频流写入管道
+        video_process.stdin.write(video_response.content)
+        # 关闭视频流
+        video_process.stdin.close()
 
+        # 将音频流写入管道
+        for chunk in audio_response.iter_content(chunk_size=4096):
+            video_process.stdin.write(chunk)
+        # 关闭音频流
+        video_process.stdin.close()
+
+        # 等待 FFmpeg 完成处理
+        video_process.wait()
+
+    logging.info("合并完成")
     logging.info(f"文件名: {title}下载完成!")
 
 
